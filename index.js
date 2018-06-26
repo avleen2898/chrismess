@@ -1,13 +1,16 @@
 const form = document.querySelector("#chrisMovies");
 
-const listOfMovies = function(ev){
-    ev.preventDefault();
-    const list = document.querySelector('#displayMovies');
+const generateNewElement = function(){
     let item = document.createElement('li');
     let movieName = document.querySelector('#movieName').value;
     let movieYear = document.querySelector('#movieYear').value;
     item.textContent = movieName + ' ' + movieYear;
-    list.appendChild(item);
+    return item;
+}
+const listOfMovies = function(ev){
+    ev.preventDefault();
+    const list = document.querySelector('#displayMovies');
+    list.appendChild(generateNewElement());
     form.reset();
 }
 
