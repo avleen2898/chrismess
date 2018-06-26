@@ -8,20 +8,21 @@
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 </head>
 <body>
-    <h1> Chrismess </h1>
-    <h1 id="description"> A whole mess of Chrisses</h1>
-    <h2> Trying to make a mess of Christmas </h2>
-    <h3> Yet failing miserably </h3>
-    <button id="btn1"> Change heading 1 </button>
-    <button id="btn2"> Change heading 2 </button>
-    <br> <br>
+    <h1> Chrismess - A whole mess of Chrisses</h1>
 
-    <form>
-        What's your Christmas mess?
-        <input type="text" id="newHeading" value="No mess">
+    <form id="chrisMovies">
+        Enter a Chris movie
+        <input type="text" id="movieName">
         <br>
-        <input type="submit" id="submit"> 
+        Enter the year it was released 
+        <input type="number" id="movieYear">
+        <br>
+        <button type="submit"> Submit </button>
     </form>
+
+    <ul id="displayMovies">
+
+    </ul>
     <script src="index.js"></script>   
 </body>
 </html>
