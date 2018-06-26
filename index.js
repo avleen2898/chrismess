@@ -9,6 +9,18 @@ const changeHeading2 = function(){
     const heading2 = document.querySelector('#description');
     heading2.textContent = "This might just turn into the messiest Christmas mess time?";
 }
+const changeHeadingFromForm = function(){
+    const newHeading = document.querySelector('#newHeading');
+    const heading1 = document.querySelector('h1');
+    heading1.textContent = newHeading.value;
+}
 
 button1.addEventListener('click', changeHeading1);
 button2.addEventListener('click', changeHeading2);
+
+document.querySelector("#submit").addEventListener('click', function(event) {
+    event.preventDefault();
+}, false);
+
+document.querySelector("#submit").addEventListener('click', changeHeadingFromForm);
+
