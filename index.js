@@ -1,27 +1,28 @@
 const form = document.querySelector("#chrisMovies");
 
-const generateNewMovie = function(){
-    let movie = document.createElement('li');
-    let movieName = document.querySelector('#movieName').value;
-    movie.textContent = movieName;
-    return movie;
+const renderProperty = function(value)
+{
+    const item = document.createElement('li');
+    item.textContent = value;
+    return item;
 }
-const generateNewYear = function(){
-    let year = document.createElement('li');
-    let movieYear = document.querySelector('#movieYear').value;
-    year.textContent = movieYear;
-    return year;
-}
-const listOfMovies = function(ev){
+
+const handleSubmit = function(ev){
     ev.preventDefault();
     const list1 = document.querySelector('#displayMovies');
     const list2 = document.querySelector('#displayYears');
-    list1.appendChild(generateNewMovie());
-    list2.appendChild(generateNewYear());
+    const movieName = renderProperty(document.querySelector('#movieName').value);
+    const movieYear = renderProperty(document.querySelector('#movieYear').value);
+
+    list1.appendChild(movieName);
+    list2.appendChild(movieYear);
+
+    //Create object of form elements here 
+    //Call forEach on each of the keys of the object
     form.reset();
 }
 
-form.addEventListener('submit', listOfMovies);
+form.addEventListener('submit', handleSubmit);
 
 
 
