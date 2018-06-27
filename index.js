@@ -40,15 +40,24 @@ class App{
         };
         
         this.flicks.push(flick);
+        console.log(this.flicks);
        
         const item = this.renderItem(flick);
         const list = document.querySelector('#flicks');
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete item';
-        deleteButton.id = 'deleteButton';
         
         list.appendChild(item);
-        list.appendChild(deleteButton);
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete item';
+        item.appendChild(deleteButton);
+
+        deleteButton.addEventListener('click', () =>{
+            while (item.hasChildNodes()) {
+                item.removeChild(item.firstChild);
+            }
+            list.removeChild(item);
+            let i = this.flicks.indexOf(flick);
+            this.flicks.splice(i,1);
+        });
         
         f.reset();
         f.movieName.focus();
