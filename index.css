@@ -37,15 +37,9 @@ button{
 li{
     font-size: 20px;
 }
-#displayMovies{
+.movieName{
     color: red;
 }
-#displayYears{
-    color: blue;
-}
-.movieName{
-
-}
 .movieYear{
-    
+    color: blue;
 }

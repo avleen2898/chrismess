@@ -20,7 +20,6 @@ class App{
 
         //Create a list item to be added to the unordered list
         const item = document.createElement('li');
-        //item.classList.add('flick');
 
         //Create an array of all the keys in the flick object 
         const properties = Object.keys(flick);
@@ -29,6 +28,7 @@ class App{
         properties.forEach((propertyName) => {
             const span = this.renderProperty(propertyName, flick[propertyName]);
             item.appendChild(span);
+            item.append(' ');
         });
         return item;
     }
@@ -74,7 +74,8 @@ class App{
         });
 
         favButton.addEventListener('click', () =>{
-            item.style.color = 'red';
+            item.style.fontSize = '25px';
+            item.style.border = '2px solid green';
             let i = this.flicks.indexOf(flick);
             this.flicks[i].favorite = 'Yes';
         });
