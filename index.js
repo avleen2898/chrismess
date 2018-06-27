@@ -1,28 +1,57 @@
-const form = document.querySelector("#chrisMovies");
+class App{
+    constructor(){
+        const form = document.querySelector("#chrisMovies");
+        form.addEventListener('submit', (ev) => {
+            ev.preventDefault();
+            this.handleSubmit(ev);
+        });
+    }
 
-const renderProperty = function(value)
-{
-    const item = document.createElement('li');
-    item.textContent = value;
-    return item;
+    renderProperty(name, value){
+        const span = document.createElement('span');
+        span.classList.add(name);
+        span.textContent = value;
+        return span;
+    }
+
+    renderItem(flick){
+        const item = document.createElement('li');
+        //item.classList.add('flick');
+
+        const properties = Object.keys(flick);
+
+        properties.forEach((propertyName) => {
+            const span = this.renderProperty(propertyName, flick[propertyName]);
+            item.appendChild(span);
+        });
+
+        return item;
+
+    }
+
+    handleSubmit(ev){
+        const f = ev.target;
+
+        const flick = {
+            movieName: f.movieName.value,
+            movieYear: f.movieYear.value,
+        };
+        
+        const item = this.renderItem(flick);
+        const list = document.querySelector('#flicks');
+        list.appendChild(item);
+   
+        f.reset();
+        f.movieName.focus();
+
+    }
 }
 
-const handleSubmit = function(ev){
-    ev.preventDefault();
-    const list1 = document.querySelector('#displayMovies');
-    const list2 = document.querySelector('#displayYears');
-    const movieName = renderProperty(document.querySelector('#movieName').value);
-    const movieYear = renderProperty(document.querySelector('#movieYear').value);
+const app = new App();
 
-    list1.appendChild(movieName);
-    list2.appendChild(movieYear);
 
-    //Create object of form elements here 
-    //Call forEach on each of the keys of the object
-    form.reset();
-}
 
-form.addEventListener('submit', handleSubmit);
+
 
 
 
