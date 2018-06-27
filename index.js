@@ -43,8 +43,12 @@ class App{
        
         const item = this.renderItem(flick);
         const list = document.querySelector('#flicks');
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete item';
+        deleteButton.id = 'deleteButton';
         
         list.appendChild(item);
+        list.appendChild(deleteButton);
         
         f.reset();
         f.movieName.focus();
