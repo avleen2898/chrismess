@@ -34,3 +34,9 @@ button{
 li{
     font-size: 20px;
 }
+#displayMovies{
+    color: red;
+}
+#displayYears{
+    color: blue;
+}
