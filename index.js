@@ -1,10 +1,12 @@
 class App{
+
     constructor(){
         const form = document.querySelector("#chrisMovies");
         form.addEventListener('submit', (ev) => {
             ev.preventDefault();
             this.handleSubmit(ev);
         });
+        this.flicks = [];
     }
 
     renderProperty(name, value){
@@ -37,10 +39,13 @@ class App{
             movieYear: f.movieYear.value,
         };
         
+        this.flicks.push(flick);
+       
         const item = this.renderItem(flick);
         const list = document.querySelector('#flicks');
+        
         list.appendChild(item);
-   
+        
         f.reset();
         f.movieName.focus();
 
