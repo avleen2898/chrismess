@@ -34,10 +34,9 @@ class App{
     }
 
     handleSubmit(ev){
-
         const f = ev.target;
 
-        //Creat a flick object that stores the name and year of the movie typed in the form field
+        //Create a flick object that stores the name and year of the movie typed in the form field
         const flick = {
             movieName: f.movieName.value,
             movieYear: f.movieYear.value,
@@ -46,8 +45,8 @@ class App{
         //Push the flick object onto the flicks array 
         this.flicks.push(flick);
        
-        const item = this.renderItem(flick);
         const list = document.querySelector('#flicks');
+        const item = this.renderItem(flick);
         
         //Append the list item to the unordered list 
         list.appendChild(item);
@@ -57,6 +56,10 @@ class App{
         deleteButton.textContent = 'Delete item';
         item.appendChild(deleteButton);
 
+        const favButton = document.createElement('button');
+        favButton.textContent = 'Favorite item';
+        item.appendChild(favButton);
+
         deleteButton.addEventListener('click', () =>{
             //Delete all the child nodes (span and button) of the list item
             while (item.hasChildNodes()) {
@@ -64,11 +67,18 @@ class App{
             }
             //Delete the list item from the unordered list
             list.removeChild(item);
+
             //Find the index of the flick object and delete it from the flicks array
             let i = this.flicks.indexOf(flick);
             this.flicks.splice(i,1);
         });
-        
+
+        favButton.addEventListener('click', () =>{
+            item.style.color = 'red';
+            let i = this.flicks.indexOf(flick);
+            this.flicks[i].favorite = 'Yes';
+        });
+
         f.reset();
         f.movieName.focus();
     }
