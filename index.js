@@ -62,9 +62,9 @@ class App{
 
         deleteButton.addEventListener('click', () =>{
             //Delete all the child nodes (span and button) of the list item
-            while (item.hasChildNodes()) {
+            /*while (item.hasChildNodes()) {
                 item.removeChild(item.firstChild);
-            }
+            }*/
             //Delete the list item from the unordered list
             list.removeChild(item);
 
