@@ -61,7 +61,6 @@ class App{
         item.appendChild(favButton);
 
         deleteButton.addEventListener('click', () =>{
-            
             //Delete the list item from the unordered list
             list.removeChild(item);
 
@@ -71,8 +70,9 @@ class App{
         });
 
         favButton.addEventListener('click', () =>{
-            item.style.fontSize = '25px';
-            item.style.border = '2px dashed green';
+            //item.style.fontSize = '25px';
+            //item.style.border = '2px dashed green';
+            item.classList.toggle('favorite');
             let i = this.flicks.indexOf(flick);
             this.flicks[i].favorite = 'Yes';
         });
