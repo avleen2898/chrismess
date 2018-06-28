@@ -2,12 +2,21 @@ class App{
     constructor(){
         this.list = document.querySelector('#flicks');
         this.flicks = [];
+        this.load();
         const form = document.querySelector("#chrisMovies");
         form.addEventListener('submit', (ev) => {
             ev.preventDefault();
             this.handleSubmit(ev);
         });
         
+    }
+
+    load(){
+        const flicks = JSON.parse(localStorage.getItem('flicks'));
+
+        if(flicks){
+            flicks.forEach(flick => this.addFlick(flick));
+        }
     }
 
     save()
@@ -92,6 +101,10 @@ class App{
         this.flicks.push(flick);
         const item = this.renderItem(flick);
 
+        if(flick.favorite){
+            item.classList.add('favorite');
+        }
+
         //Append the list item to the unordered list 
         this.list.appendChild(item);
     }
@@ -108,7 +121,7 @@ class App{
         
         this.addFlick(flick);
         this.save();
-        
+
         f.reset();
         f.movieName.focus();
     }
