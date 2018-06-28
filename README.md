@@ -2,9 +2,11 @@
 
 The first project for Xtern Bootcamp 2018 Session 3. This project uses vanilla JavaScript/ES2015+.
 
-# Chrismess
+## Day 4 Homework
+Try the official React Tutorial
 
-The first project for Xtern Bootcamp 2018 Session 3. This project uses vanilla JavaScript/ES2015+.
+### Super Mega Bonus Credit
+Have a great weekend!
 
 ## Day 3 Homework
 
