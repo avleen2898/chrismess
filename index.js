@@ -75,7 +75,7 @@ class App{
 
         favButton.addEventListener('click', () =>{
             item.style.fontSize = '25px';
-            item.style.border = '2px solid green';
+            item.style.border = '2px dashed green';
             let i = this.flicks.indexOf(flick);
             this.flicks[i].favorite = 'Yes';
         });
