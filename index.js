@@ -19,7 +19,6 @@ class App{
     }
 
     renderItem(flick){
-
         //Create a list item to be added  unordered list
         const item = document.createElement('li');
 
@@ -46,10 +45,8 @@ class App{
             this.removeFlick(flick, item)
         });
 
-        favButton.addEventListener('click', () =>{
-            item.classList.toggle('favorite');
-            let i = this.flicks.indexOf(flick);
-            this.flicks[i].favorite = true;
+        favButton.addEventListener('click', (_ev) =>{
+            this.toggleFavorite(flick, item)  
         });
 
         return item;
@@ -63,6 +60,13 @@ class App{
         //Find the index of the flick object and delete it from the flicks array
         let i = this.flicks.indexOf(flick);
         this.flicks.splice(i,1);
+    }
+
+    toggleFavorite(flick, item){
+        item.classList.toggle('favorite');
+        let i = this.flicks.indexOf(flick);
+        this.flicks[i].favorite = true;
+
     }
 
     handleSubmit(ev){
