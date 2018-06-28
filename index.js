@@ -1,11 +1,13 @@
 class App{
     constructor(){
+        this.list = document.querySelector('#flicks');
+        this.flicks = [];
         const form = document.querySelector("#chrisMovies");
         form.addEventListener('submit', (ev) => {
             ev.preventDefault();
             this.handleSubmit(ev);
         });
-        this.flicks = [];
+        
     }
 
     //Create a function that creates a span element and adds a class and text content to it
@@ -18,7 +20,7 @@ class App{
 
     renderItem(flick){
 
-        //Create a list item to be added to the unordered list
+        //Create a list item to be added  unordered list
         const item = document.createElement('li');
 
         //Create an array of all the keys in the flick object 
@@ -30,26 +32,6 @@ class App{
             item.appendChild(span);
             item.append(' ');
         });
-        return item;
-    }
-
-    handleSubmit(ev){
-        const f = ev.target;
-
-        //Create a flick object that stores the name and year of the movie typed in the form field
-        const flick = {
-            movieName: f.movieName.value,
-            movieYear: f.movieYear.value,
-        };
-        
-        //Push the flick object onto the flicks array 
-        this.flicks.push(flick);
-       
-        const list = document.querySelector('#flicks');
-        const item = this.renderItem(flick);
-        
-        //Append the list item to the unordered list 
-        list.appendChild(item);
 
         //Create a button element and append it to each of the list items
         const deleteButton = document.createElement('button');
@@ -62,7 +44,7 @@ class App{
 
         deleteButton.addEventListener('click', () =>{
             //Delete the list item from the unordered list
-            list.removeChild(item);
+            this.list.removeChild(item);
 
             //Find the index of the flick object and delete it from the flicks array
             let i = this.flicks.indexOf(flick);
@@ -72,8 +54,29 @@ class App{
         favButton.addEventListener('click', () =>{
             item.classList.toggle('favorite');
             let i = this.flicks.indexOf(flick);
-            this.flicks[i].favorite = 'Yes';
+            this.flicks[i].favorite = true;
         });
+
+        return item;
+    }
+
+    handleSubmit(ev){
+        const f = ev.target;
+
+        //Create a flick object that stores the name and year of the movie typed in the form field
+        const flick = {
+            movieName: f.movieName.value,
+            movieYear: f.movieYear.value,
+            favorite: false,
+        };
+        
+        //Push the flick object onto the flicks array 
+        this.flicks.push(flick);
+    
+        const item = this.renderItem(flick);
+        
+        //Append the list item to the unordered list 
+        this.list.appendChild(item);
 
         f.reset();
         f.movieName.focus();
