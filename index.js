@@ -42,13 +42,8 @@ class App{
         favButton.textContent = 'Favorite item';
         item.appendChild(favButton);
 
-        deleteButton.addEventListener('click', () =>{
-            //Delete the list item from the unordered list
-            this.list.removeChild(item);
-
-            //Find the index of the flick object and delete it from the flicks array
-            let i = this.flicks.indexOf(flick);
-            this.flicks.splice(i,1);
+        deleteButton.addEventListener('click', (_ev) =>{
+            this.removeFlick(flick, item)
         });
 
         favButton.addEventListener('click', () =>{
@@ -58,6 +53,16 @@ class App{
         });
 
         return item;
+    }
+
+    removeFlick(flick, item)
+    {
+        //Delete the list item from the unordered list
+        this.list.removeChild(item);
+
+        //Find the index of the flick object and delete it from the flicks array
+        let i = this.flicks.indexOf(flick);
+        this.flicks.splice(i,1);
     }
 
     handleSubmit(ev){
