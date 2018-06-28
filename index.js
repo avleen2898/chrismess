@@ -44,6 +44,10 @@ class App{
          const favButton = document.createElement('button');
          favButton.innerHTML = '<i class="fas fa-heart" title = "favorite item"></i>';
          actions.appendChild(favButton);
+
+         const editButton = document.createElement('button');
+         editButton.innerHTML = '<i class="fas fa-edit" title="edit item"></i>';
+         actions.appendChild(editButton);       
  
          deleteButton.addEventListener('click', (_ev) =>{
              this.removeFlick(flick, item)
