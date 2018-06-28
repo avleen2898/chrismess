@@ -24,11 +24,11 @@ class App{
 
          //Create a button element and append it to each of the list items
          const deleteButton = document.createElement('button');
-         deleteButton.textContent = 'Delete item';
+         deleteButton.innerHTML = '<i class="fas fa-trash-alt" title="delete item"></i>';
          actions.appendChild(deleteButton);
  
          const favButton = document.createElement('button');
-         favButton.textContent = 'Favorite item';
+         favButton.innerHTML = '<i class="fas fa-heart" title = "favorite item"></i>';
          actions.appendChild(favButton);
  
          deleteButton.addEventListener('click', (_ev) =>{
