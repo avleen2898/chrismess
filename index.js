@@ -40,7 +40,6 @@ class App{
         const flick = {
             movieName: f.movieName.value,
             movieYear: f.movieYear.value,
-            favorite: false;
         };
         
         //Push the flick object onto the flicks array 
@@ -73,7 +72,7 @@ class App{
         favButton.addEventListener('click', () =>{
             item.classList.toggle('favorite');
             let i = this.flicks.indexOf(flick);
-            this.flicks[i].favorite = true;
+            this.flicks[i].favorite = 'Yes';
         });
 
         f.reset();
@@ -82,10 +81,3 @@ class App{
 }
 
 const app = new App();
-
-
-
-
-
-
-
