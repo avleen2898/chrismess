@@ -10,6 +10,11 @@ class App{
         
     }
 
+    save()
+    {
+        localStorage.setItem('flicks', JSON.stringify(this.flicks));
+    }
+
     //Create a function that creates a span element and adds a class and text content to it
     renderProperty(name, value){
         const span = document.createElement('span');
@@ -70,6 +75,8 @@ class App{
         //Find the index of the flick object and delete it from the flicks array
         let i = this.flicks.indexOf(flick);
         this.flicks.splice(i,1);
+
+        this.save();
     }
 
     toggleFavorite(flick, item){
@@ -77,6 +84,16 @@ class App{
         let i = this.flicks.indexOf(flick);
         this.flicks[i].favorite = true;
 
+        this.save();
+    }
+
+    addFlick(flick){
+        //Push the flick object onto the flicks array 
+        this.flicks.push(flick);
+        const item = this.renderItem(flick);
+
+        //Append the list item to the unordered list 
+        this.list.appendChild(item);
     }
 
     handleSubmit(ev){
@@ -89,14 +106,9 @@ class App{
             favorite: false,
         };
         
-        //Push the flick object onto the flicks array 
-        this.flicks.push(flick);
-    
-        const item = this.renderItem(flick);
+        this.addFlick(flick);
+        this.save();
         
-        //Append the list item to the unordered list 
-        this.list.appendChild(item);
-
         f.reset();
         f.movieName.focus();
     }
