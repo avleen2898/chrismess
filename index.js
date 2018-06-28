@@ -18,6 +18,30 @@ class App{
         return span;
     }
 
+    renderActionButtons(flick, item){
+        const actions = document.createElement('div');
+        actions.classList.add('actions');
+
+         //Create a button element and append it to each of the list items
+         const deleteButton = document.createElement('button');
+         deleteButton.textContent = 'Delete item';
+         actions.appendChild(deleteButton);
+ 
+         const favButton = document.createElement('button');
+         favButton.textContent = 'Favorite item';
+         actions.appendChild(favButton);
+ 
+         deleteButton.addEventListener('click', (_ev) =>{
+             this.removeFlick(flick, item)
+         });
+ 
+         favButton.addEventListener('click', (_ev) =>{
+             this.toggleFavorite(flick, item)  
+         });
+
+         return actions;
+    }
+
     renderItem(flick){
         //Create a list item to be added  unordered list
         const item = document.createElement('li');
@@ -32,22 +56,8 @@ class App{
             item.append(' ');
         });
 
-        //Create a button element and append it to each of the list items
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete item';
-        item.appendChild(deleteButton);
-
-        const favButton = document.createElement('button');
-        favButton.textContent = 'Favorite item';
-        item.appendChild(favButton);
-
-        deleteButton.addEventListener('click', (_ev) =>{
-            this.removeFlick(flick, item)
-        });
-
-        favButton.addEventListener('click', (_ev) =>{
-            this.toggleFavorite(flick, item)  
-        });
+        const actions = this.renderActionButtons(flick, item);
+        item.appendChild(actions);
 
         return item;
     }
