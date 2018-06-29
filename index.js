@@ -46,6 +46,7 @@ class App{
          actions.appendChild(favButton);
 
          const editButton = document.createElement('button');
+         editButton.classList.add('editButton');
          editButton.innerHTML = '<i class="fas fa-edit" title="edit item"></i>';
          actions.appendChild(editButton);       
  
@@ -57,12 +58,17 @@ class App{
              this.toggleFavorite(flick, item)  
          });
 
+         editButton.addEventListener('click', (_ev) => {
+            this.editContent(flick, item);
+         });
+
          return actions;
     }
 
     renderItem(flick){
         //Create a list item to be added  unordered list
         const item = document.createElement('li');
+        item.classList.add('flickListItem');
 
         //Create an array of all the keys in the flick object 
         const properties = Object.keys(flick);
@@ -111,6 +117,11 @@ class App{
 
         //Append the list item to the unordered list 
         this.list.appendChild(item);
+    }
+
+    editContent(flick, item){
+        document.querySelector('.movieName').contentEditable = "true";
+        document.querySelector('.movieYear').contentEditable = "true";
     }
 
     handleSubmit(ev){
